@@ -33,48 +33,21 @@ def ridgeRegression(TrainX, TrainY, lam):
 
 def streamwiseRegression(TrainX, TrainY, lam):
     cols = []
-    error = 1.00
+    error = 1
     
-    for j in range(TrainX[0].size):
+    for j in range(X[0].size):
         cols.append(j)
         w = ridgeRegression(TrainX[:,cols], TrainY, lam)
         temp = np.dot(w, TrainX[j])
         if temp > 0: yHat = 1
         else: yHat = -1
-        err_new = pow((TrainY[j] - yHat), 2) + lam*len(cols)
-        if err_new > error:
-            cols.remove(j)
-        error = err_new
+        if yHat == TrainY[j]
 
-    w_final = ridgeRegression(TrainX[:,cols], TrainY, lam)
-    err_final = 
-    return err_final
+    return
 
 def stepwiseRegression(X, Y):
-    cols = []
-    error = 1.00
     
-    while something:
-        best = 0
-        count = 0
-        for j in range(TrainX[0].size):
-            cols.append(j)
-            w = ridgeRegression(TrainX[:,cols], TrainY, lam)
-            temp = np.dot(w, TrainX[j])
-            if temp > 0: yHat = 1
-            else: yHat = -1
-            err_new = pow((TrainY[j] - yHat), 2) + lam*len(cols)
-            if err_new < error:
-                best = j
-                count += 1
-            error = err_new
-            cols.remove(j)
-        if count > 0:
-            cols.append(best)
-
-    w_final = ridgeRegression(TrainX[:,cols], TrainY, lam)
-    err_final =
-    return err_final
+    return
 
 def perceptron(TrainX, TrainY, TestX, TestY):
     

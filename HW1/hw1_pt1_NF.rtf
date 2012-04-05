@@ -1,0 +1,61 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf230
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww12300\viewh13200\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0\fs24 \cf0 ---------  HW1 part 1  ---------\
+---------  Nathan Fraenkel  ---------\
+\
+\
+1 --------------- \
+a) \
+TRUE. A rational agent, is supposed to act in a way that will maximize its performance. However, a rational agent does not necessarily know everything about its environment and how well it is actually performing. \
+b) \
+FALSE.  A perfectly rational agent does not necessarily know everything about its environment, as it acts rationally given the available information. Not all information about the agent's environment may be disclosed.\
+ex: an automated taxi driver will not know necessarily know that an oncoming driver is drunk and therefore extremely dangerous.\
+c) \
+FALSE. If both agents play perfect/completely optimal moves, both tic tac toe and checkers will result in a draw.\
+d) \
+TRUE. The agent both perceives and acts. It perceives via the user input, and acts with a dictionary of word, word frequencies so that it can predict the word that the user is trying to spell and then finish the word. The performance can be measured by the agent by how often the user chooses the word offered up by the agent. \
+\
+2 --------------- \
+a)\
+Autonomous Thermostat\
+P: 	Comfortable temperatures\
+	Amount of money saved\
+E: 	Home\
+	Office\
+	Classrooms\
+A:	Display\
+	Temperature changer\
+S:	Dial to change temperature\
+	Smartphone to change temperature\
+	 Time-keeping mechanism to remember when temperature was changed and learn\
+b)\
+Search Engine\
+P:	Success rate of 1st page of results of search (how often user clicks these results)\
+	Effectiveness/ how good the recommendation engine is (ties into first one)\
+E:	Website of search engine\
+A:	Display of results from search\
+S:	User input/ keyboard input\
+\
+3 --------------- \
+Error:\
+TypeError: unhashable type: 'list'\
+The error is a result of trying to assign a list as the key for this dictionary. Since list are mutable, and keys of dictionaries can only be immutable types, we get an error. It could be fixed by putting this instead: \{1: "Bob", 2: "Bob"\}\
+\
+4 --------------- \
+Program 1: L2 = [1,2,3]\
+Program 2: L2 = [3,2,1]\
+In Program 1, we are passing the value of L1 into L2. We make a copy of L1, and tell the name L2 to point to that copy. So, when L1 was modified, it had no effect on L2.\
+However, in Program 2, we are passing the reference of L1 into L2. We don't make a copy here, we simply tell the name L2 to point to the same thing as L1. So, when L1 gets modified, we are also modifying L2, since the two names both point to the same thing.\
+\
+5 --------------- \
+y is going to be equal to the value that is returned by x.reverse(). But, since the reverse() function has no return value, y = None.\
+\
+6 ---------------\
+[(x, x+1) for x in range(10)]\
+will return a list of 2-tuples where x ranges from [0:9] (inclusive)\
+\
+}

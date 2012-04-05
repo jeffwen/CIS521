@@ -1,0 +1,51 @@
+1. a)true.   if we define success in terms of agent's opinion of its own performance, an agent could achieve perfect rationality simply by deluding itself that its performance was perfect.(pg37).  Therefore in this case, if the agent deludes himself, he has no real measure of performance.
+
+   b) false.  A perfectly rational agent may have some prior information about the environment,but the agent gains experience through learning more about the nvironment.
+
+c)false.  If both agents make the optimal plays then tic tac toe will force a draw, and the optimal plays are clearly defined already.  The same goes with Checkers.  Perfect play on both sides will result in a draw.
+
+d) true.  The agent has prior knowledge of the environment (i.e a dictionary of words and usage frequencies to predict and finish words).  The agent learns and adapts to new words (frequently used slang, names etc all appear in iPhone's predictive keyboard).  The performance is also measurable (hilariously poor)
+
+2.a) 
+Agent type: Autonomous Thermostat
+Performance Measure:
+	    Money saved from saving power
+	    Constantly comfortable temperatures
+	    Accurate times at home and away
+Environment:
+	Home
+	Office
+	Where ever people are lazy
+Actuators:
+	Display of temperature
+Sensors:
+	Dial to change temperature
+	Clock to check when temperature was changed
+	mobile phone to change temperature on the go
+
+Agent type: Search Engine
+Performance Measure:
+	    User chooses from top 10 searchs usually
+	    Engine predicts user's choice (i.e Google reccomendations)
+Environment:
+	Engine website
+Actuators:
+	Display of search result
+Sensors:
+	Keyboard entry of search words and phrases
+
+3. a)TypeError: unhashable type: 'list'
+   	[1,2] is not the number 1 or 2, but rather a list object.  You can't make a list a key to the word Bob in a dictonary.  So it should be like this {1: "Bob", 2: "Bob"}
+
+4. Program 1
+   L2 returns [1,2,3]
+      Program 2
+      L2 returns [3,2,1]
+
+When you set L2 = L1[:] it passes the value of L1 into L2 therefore when L1 was modified with the reverse method, L2 was unaffected.  However when you set L2 = L1 it passes the reference stored at L1 to L2 so L1 and L2 point to the same memory location.  Therefore when L1 is modified, L2 is also modified.
+
+5. y = None because x.reverse() has no return value which in python is None.
+
+6. [(x, x+1) for x in range(10)] from 0 to 9 inclusive
+   [(x, x+1) for x in range(9)] from 0 to 9 exclusive
+ 

@@ -1,0 +1,84 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf230
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww25100\viewh13200\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0\fs24 \cf0 *************** Nathan Fraenkel ***************\
+\
+***************     HW 2, Part 1    ***************\
+\
+\
+1.\
+State Space: Different possible situations with water in each of the two jugs: each integer combination with jug4 having possibilities [0:4] and jug13 having possibilities [0:13]\
+Initial Space: Both jugs are empty (let's call the jug of 4L jug4, and the other jug13\
+Action Space: \{ fill jug 4 from supply, fill jug13 from supply, empty jug4, empty jug13, pour contents of jug4 into jug13, pour contents of jug13 into jug4 \}\
+Goal Condition: have one jug with 2L inside.\
+Costs of Actions: number of actions to reach goal\
+\
+You can in fact use these two jugs of volumes 4L and 13L to get 2L of water. \
+( Fill jug4, Pour jug4 into jug13 ) x3\
+NOW: (jug13 has 12L water)\
+\
+Fill jug4, Pour jug4 into jug13 \
+NOW: jug13 has 13L water, jug4 has 3L water\
+\
+Empty jug13 \
+NOW: jug13 has 0L water, jug4 has 3L water\
+\
+Pour jug4 into jug13 \
+NOW: jug13 has 3L water, jug4 has 0L water\
+\
+( Fill jug4, Pour jug4 into jug 13 ) x2\
+NOW: jug13 has 11L water\
+\
+Fill jug4, Pour jug4 into jug13\
+NOW: 
+\b jug4 has 2L water
+\b0 , jug13 has 13L water\
+\
+2.\
+Consider the space where each state has only one path to its next state, and where the solution to the initial problem is located a depth of n. THEN, DFS would be a straightforward and solve this problem in n steps, whereas iterative deepening search would be require 1 + 2 + 3 + \'85 + n = n(n+1) / 2 = O(n^2). In this case it makes much more sense to use DFS. \
+\
+3.\
+a) With only a means of comparing two nodes, we can still implement a sort of best-first search. For each possible node to visit, we them into the fringe queue in an arbitrary order. Then, once in the queue, they can be compared to one another and ultimately given a ranking 1 through size of the queue. Then, each time more nodes are added to the queue, they must be compared to each other again and re-ranked.\
+b) The difference between the two is that greedy search is more memory efficient, but best-first search is more time efficient because while greedy search does not find the optimal path, best-first search does.\
+\
+4. \
+1. The number of people who still must cross the bridge (admissible, consistent)\
+2. The number of trips that still have to be made (admissible, consistent)\
+3. The sum of time that the remaining people would take to cross the bridge (aka sum of T(i) values for all i still needing to cross) (admissible, consistent)\
+\
+5. \
+a, b, and c are all admissible\
+\
+6.\
+a, b, and c are all consistent\
+\
+7.\
+Iterative deepening DFS because of the very large search space, DFS can be ruled out. Iterative deepening DFS would also be better than BFS because space complexity is lower because you don't have to keep track of the entire tree like you do in BFS.\
+\
+***************     HW 2, Part 2    ***************\
+1.\
+The branching factor would be 9.  For a given board with an empty square in it, the 9 possible successor states will be that same board but with the first empty square with a 1 or a 2 or a \'85.. or a 9 in it.\
+\
+2. \
+DFS will be finite. The maximum depth of DFS will be r, the number of empty positions on the sudoku board, because each time you go down one depth level, one square gets filled. So, when you hit the final/highest depth level, it will be when all r squares that were originally empty are filled.\
+\
+3. \
+Best case run time would be O(r), in the case that the solution is found when expanding the first path.\
+Worst case run time would be O(9^r), in the case where the solution is found after expanding the final path.\
+\
+4.\
+Best case and worst case run time would be O(9^r), when you arrive at the final depth of the expansion (or O(9^(r-1)) if your implementation checks if it is solved before enqueueing)\
+\
+5.\
+It would be 9^40 bytes\
+\
+6.\
+The state space will be all possible ways that you can fill in the sudoku board, so it would be 9^r.\
+\
+7.\
+Pick two non-fixed squares at random and swap their values.\
+\
+}

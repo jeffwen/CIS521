@@ -1,0 +1,19 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf230
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0\fs24 \cf0 SIMULATED ANNEALING NOTES\
+\
+- have a cost function that calculates cost of a given board\
+- have successor function that takes in a board, list of non-fixed locations and RANDOMLY swaps 2 of the locations in this list on the board.\
+\
+--> simulated annealing - takes in a board, max # of iterations before stopping (T)\
+1. initialize your initially incomplete board by filling in squares in a way that the column constraints are satisfied\
+2. WHILE the board is not solved, you want to call your successor function on your current board state, b1, and generate a new board, b2.  b1 and b2 will both have costs associated with them. An UPHILL move is accepting the move change in state from b1 to b2 IF cost(b2) > cost(b1) (low cost = better). A DOWNHILL move is going from b1 to b2 when cost(b2) < cost(b1). On iteration t, we will make an UPHILL move p(t) = 0.99*p(t-1) times.\
+\
+\
+\
+3. make sure and keep track of # REJECTED uphill moves, # ACCEPTED uphill moves, # downhill moves.\
+4. }

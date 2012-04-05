@@ -23,9 +23,11 @@ def naiveBayes(X, Y):
     print c
     return c
 
-def ridgeRegression(X, Y):
-    
-    return
+def ridgeRegression(TrainX, TrainY, lam):
+    tX = np.asmatrix(TrainX)
+    tY = np.asmatrix(TrainY)
+    w = np.linalg.inv(tX.T*tY + lam*np.identity(tX.size, float))*tX.T*tY
+    return w
 
 def streamwiseRegression(X, Y):
     cols = []
@@ -83,6 +85,8 @@ def perceptron(TrainX, TrainY, TestX, TestY):
      
     return sum/float(len(TestX))
 
+
+
 d = Dataset.Dataset("../rec.sport.baseball.txt", "../rec.sport.hockey.txt", cutoff=100)
 labels=['baseball', 'hockey', 'PC', 'Mac']
 
@@ -91,7 +95,7 @@ test2 = d.getTrainAndTestSets(.8, 2)
 test3 = d.getTrainAndTestSets(.8, 3)
 test4 = d.getTrainAndTestSets(.8, 4)
 test5 = d.getTrainAndTestSets(.8, 5)
-#print test
+print ridgeRegression(test1[0], test2[1], 3)
 f = perceptron(test1[0], test1[1], test1[2], test1[3])
 g = perceptron(test2[0], test2[1], test2[2], test2[3])
 h = perceptron(test3[0], test3[1], test3[2], test3[3])

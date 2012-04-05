@@ -26,7 +26,7 @@ def naiveBayes(X, Y):
 def ridgeRegression(TrainX, TrainY, lam):
     tX = np.asmatrix(TrainX)
     tY = np.asmatrix(TrainY)
-    w = np.linalg.inv(tX.T*tY + lam*np.identity(tX.size, float))*tX.T*tY
+    w = np.linalg.inv(tX.T*tX + lam*np.identity(tX.size, float))*tX.T*tY
     return w
 
 def streamwiseRegression(X, Y):

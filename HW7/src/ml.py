@@ -31,26 +31,50 @@ def ridgeRegression(TrainX, TrainY, lam):
     w = np.linalg.inv(tX.T*tX + temp)*tX.T*tY
     return w
 
-def streamwiseRegression(X, Y):
+def streamwiseRegression(TrainX, TrainY, lam):
     cols = []
-    error = 1
-    m1 = np.asmatrix(X)
-    m2 = np.asmatrix(Y)
-    lamb=1
-    I=np.identity(m1)
+    error = 1.00
     
-    for j in range(X[0].size):
+    for j in range(TrainX[0].size):
         cols.append(j)
-        
-    
-    for y in Y:
-        w = np.linalg.inv(m1.T*m1*(lamb*I))*m1.T*y
-        res = X*w
-    return
+        w = ridgeRegression(TrainX[:,cols], TrainY, lam)
+        temp = np.dot(w, TrainX[j])
+        if temp > 0: yHat = 1
+        else: yHat = -1
+        err_new = pow((TrainY[j] - yHat), 2) + lam*len(cols)
+        if err_new > error:
+            cols.remove(j)
+        error = err_new
+
+    w_final = ridgeRegression(TrainX[:,cols], TrainY, lam)
+    err_final = 
+    return err_final
 
 def stepwiseRegression(X, Y):
+    cols = []
+    error = 1.00
     
-    return
+    while something:
+        best = 0
+        count = 0
+        for j in range(TrainX[0].size):
+            cols.append(j)
+            w = ridgeRegression(TrainX[:,cols], TrainY, lam)
+            temp = np.dot(w, TrainX[j])
+            if temp > 0: yHat = 1
+            else: yHat = -1
+            err_new = pow((TrainY[j] - yHat), 2) + lam*len(cols)
+            if err_new < error:
+                best = j
+                count += 1
+            error = err_new
+            cols.remove(j)
+        if count > 0:
+            cols.append(best)
+
+    w_final = ridgeRegression(TrainX[:,cols], TrainY, lam)
+    err_final =
+    return err_final
 
 def perceptron(TrainX, TrainY, TestX, TestY):
     

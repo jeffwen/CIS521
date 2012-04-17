@@ -22,18 +22,24 @@ class QLearnBot(ValueBot):
         following events for which you can tailor rewards:
             reward_state.food_eaten: Fraction of a food item this ant ate (between 0 and 1)
             reward_state.was_killed: boolean flag whether the ant died this turn
-            reward_state.death_dealt: Fraction of responsibility this ant contributed to killing other ants (e.g., if 2 ants killed an enemy an, each would have death_dealt=1/2
+            reward_state.death_dealt: Fraction of responsibility this ant contributed to killing other ants 
+			(e.g., if 2 ants killed an enemy ant, each would have death_dealt=1/2
         """
 
         '''
         YOUR CODE HERE
         '''
-        reward = 1337
+
+		#FIXFIXFIXFIXFIXFIXFIXFIXFIXFIX
+		if reward_state.was_killed:
+			reward = 0
+		else: 
+        	reward = reward_state.food_eaten * 5 + reward_state.death_dealt * 5
         return reward
     
     def avoid_collisions(self):
         """ 
-        Simple logic to avoid collisions.  No need to touch this function.
+        Simple logic to avoid collisions.  DO NOT TOUCH.
         """
         next_locations = {}
         for ant in self.world.ants:
@@ -79,8 +85,9 @@ class QLearnBot(ValueBot):
 
             YOUR CODE HERE
         """
+		
         for i in range(len(self.weights)):
-            self.weights[i] += 0xdeadbeef
+            self.weights[i] += alpha * (reward + (discount * maxval) - prevval) * features[i]
         
 
     def explore_and_exploit(self,ant):
@@ -108,17 +115,23 @@ class QLearnBot(ValueBot):
         # step size.  it's good to make this inversely proportional to the
         # number of features, so you don't bounce out of the bowl we're trying
         # to descend via gradient descent
-        alpha = 1.0
+
+		#FIXFIXFIXFIXFIXFIXFIXFIXFIXFIX
+        alpha = 1.0 / len(features)
         
         # totally greedy default value, future rewards count for nothing, do not want
-        discount = 0.0 
+
+		#FIXFIXFIXFIXFIXFIXFIXFIXFIXFIX
+        discount = 0.5 #it says something reasonable should work. --> 0.5 = reasonable?
         
         # should be max_a' Q(s',a'), where right now we are in state s' and the
         # previous state was s.  You can use
         # self.value(self.state,ant.location,action) here
-        max_next_value = 0 
+        max_next_value = self.value(self.state, ant.location, action)
         
         # should be argmax_a' Q(s',a')
+
+		#FIXFIXFIXFIXFIXFIXFIXFIXFIXFIX
         max_next_action = 'halt'
         
         # now that we have all the quantities needed, adjust the weights
@@ -127,6 +140,8 @@ class QLearnBot(ValueBot):
                 
         # step 2, explore or exploit? you should replace decide_to_explore with
         # something sensible based on the number of games played so far, self.ngames
+
+		#FIXFIXFIXFIXFIXFIXFIXFIXFIXFIX
         decide_to_explore = True
         if decide_to_explore:
             return actions[0]

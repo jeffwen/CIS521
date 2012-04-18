@@ -30,10 +30,10 @@ class QLearnBot(ValueBot):
         YOUR CODE HERE
         '''
 
-		#FIXFIXFIXFIXFIXFIXFIXFIXFIXFIX
-		if reward_state.was_killed:
-			reward = 0
-		else: 
+        #FIXFIXFIXFIXFIXFIXFIXFIXFIXFIX
+        if reward_state.was_killed:
+	       	reward = 0
+        else: 
         	reward = reward_state.food_eaten * 5 + reward_state.death_dealt * 5
         return reward
     
@@ -117,13 +117,13 @@ class QLearnBot(ValueBot):
         # to descend via gradient descent
 
 		#FIXFIXFIXFIXFIXFIXFIXFIXFIXFIX
-        alpha = 1.0 / len(features)
+        alpha = 0.00001
         
         # totally greedy default value, future rewards count for nothing, do not want
 
 		#FIXFIXFIXFIXFIXFIXFIXFIXFIXFIX
-        discount = 0.5 #it says something reasonable should work. --> 0.5 = reasonable?
-        
+        discount = 0.00001
+
         # should be max_a' Q(s',a'), where right now we are in state s' and the
         # previous state was s.  You can use
         # self.value(self.state,ant.location,action) here
@@ -141,9 +141,9 @@ class QLearnBot(ValueBot):
         # step 2, explore or exploit? you should replace decide_to_explore with
         # something sensible based on the number of games played so far, self.ngames
 
-		#FIXFIXFIXFIXFIXFIXFIXFIXFIXFIX Done?
-		num = random.random()
-		prob = random.random()
+        #FIXFIXFIXFIXFIXFIXFIXFIXFIXFIX Done?
+        num = random.random()
+        prob = random.random()
         decide_to_explore = num / self.ngames
         if decide_to_explore > prob:
             return actions[0]

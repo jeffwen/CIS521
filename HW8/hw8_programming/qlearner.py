@@ -30,11 +30,7 @@ class QLearnBot(ValueBot):
         YOUR CODE HERE
         '''
 
-        #FIXFIXFIXFIXFIXFIXFIXFIXFIXFIX
-        if reward_state.was_killed:
-	       	reward = 0
-        else: 
-        	reward = reward_state.food_eaten * 5 + reward_state.death_dealt * 5
+        reward = reward_state.food_eaten * 5 + reward_state.death_dealt * 5 + reward_state.was_killed * 5
         return reward
     
     def avoid_collisions(self):
@@ -158,7 +154,7 @@ BOT = ValueBot
 
 if __name__ == '__main__':
     from src.localengine import LocalEngine
-    from sample_bots.greedybot import GreedyBot
+    from greedybot import GreedyBot
     import sys
     import time
 

@@ -127,13 +127,15 @@ class QLearnBot(ValueBot):
         # should be max_a' Q(s',a'), where right now we are in state s' and the
         # previous state was s.  You can use
         # self.value(self.state,ant.location,action) here
-        max_next_value = self.value(self.state, ant.location, action)
-        
+        max_next_action = 'halt'
+        max_next_value = self.value(self.state, ant.location, actions[0])
+        for action in actions:
+            value = self.value(self.state, ant.location, action)
+            if value > max_next_value:
+                max_next_value = value
+                max_next_action = action
         # should be argmax_a' Q(s',a')
 
-		#FIXFIXFIXFIXFIXFIXFIXFIXFIXFIX
-        max_next_action = 'halt'
-        
         # now that we have all the quantities needed, adjust the weights
         self.update_weights(alpha,discount,R,max_next_value,ant.prev_value,ant.prev_features)
 

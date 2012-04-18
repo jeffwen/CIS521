@@ -141,9 +141,11 @@ class QLearnBot(ValueBot):
         # step 2, explore or exploit? you should replace decide_to_explore with
         # something sensible based on the number of games played so far, self.ngames
 
-		#FIXFIXFIXFIXFIXFIXFIXFIXFIXFIX
-        decide_to_explore = True
-        if decide_to_explore:
+		#FIXFIXFIXFIXFIXFIXFIXFIXFIXFIX Done?
+		num = random.random()
+		prob = random.random()
+        decide_to_explore = num / self.ngames
+        if decide_to_explore > prob:
             return actions[0]
         else:      
             return max_next_action

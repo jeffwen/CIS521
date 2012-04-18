@@ -1,0 +1,7 @@
+alpha: 0.00001
+gamma: 0.00001
+reward: reward_state.food_eaten * 0.7 + reward_state.death_dealt * 0.4 + reward_state.was_killed * -0.00001
+
+we chose these values for alpha and gamma because we wanted to learn at a slow rate, and to have a greedy gamma value.
+we chose this equation for our reward value because we wanted to put the most emphasis on the ants having eaten food. Army size is what we saw as the most important, especially against a greedy opponent, so we tried to mimic that a little by putting emphasis on ants having eaten food. We also didn't want ants to be afraid to kill opponent ants when its convenient for us, so we put the second most emphasis on death dealt. We also wanted our ants to be fearless, so we put almost zero emphasis on members of the army being killed.
+for exploration/exploitation, we set it to explore less as we played more games and therefore exploit more as we played more games. 

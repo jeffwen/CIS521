@@ -99,7 +99,8 @@ class BasicFeatures(FeatureExtractor):
         self.feature_names.append("Closest enemy 3 away")
         self.feature_names.append("Closest enemy 4 away")
         self.feature_names.append("Closest enemy >4 away")
-        self.feature_names.append("Any Food Visible")
+        self.feature_names.append("Any Visible Food")
+        self.feature_names.append("Lots of Friends")
 
     def __init__(self):
         FeatureExtractor.__init__(self, {'_type': BasicFeatures.type_name})    
@@ -128,8 +129,11 @@ class BasicFeatures(FeatureExtractor):
         enemy_loc = self.find_closest(world, loc, state.lookup_nearby_enemy(loc))
         friend_loc = self.find_closest(world, loc, state.lookup_nearby_friendly(loc))
 
+        #number of nearby foods, friends
         list_foods_nearby = state.lookup_nearby_food(loc)
         num_foods_nearby = len(list_foods_nearby)
+        list_friends_nearby = state.lookup_nearby_friendly(loc)
+        num_friends_nearby = len(list_friends_nearby)
 
         next_loc = world.next_position(loc, action)
         world.L.debug("loc: %s, food_loc: %s, enemy_loc: %s, friendly_loc: %s" % (str(loc), str(food_loc), str(enemy_loc), str(friend_loc)))
@@ -179,6 +183,7 @@ class BasicFeatures(FeatureExtractor):
             f.append(d_enemy > 4)
         
         f.append( num_foods_nearby > 0 )
+        f.append( num_friends_nearby > 10)
 
         return f
     

@@ -1,0 +1,82 @@
+-- VERSION_3
+-- START DISKCACHE
+/Users/danzhang/Dropbox/CIS521 HWs/.metadata/.plugins/org.eclipse.core.resources/.projects/ac3/com.python.pydev.analysis/v1_indexcache
+.v1_indexcache
+maintest|0|/Users/danzhang/Dropbox/CIS521 HWs/ac3/maintest.py
+-- END DISKCACHE
+-- START DICTIONARY
+1
+1=maintest
+-- END DICTIONARY
+-- START TREE 1
+43
+__c|0|
+ann|0|
+b1|0|
+b1_|0|
+b2|0|
+b2_|0|
+bfs|0|
+boo|0|
+col|0|
+com|0|
+con|0|
+cos|0|
+cou|0|
+dfs|0|
+dow|0|
+ele|0|
+f|1|f!11@
+fou|0|
+get|0|
+inf|0|
+ini|0|
+iss|0|
+len|0|
+loc|0|
+new|0|
+non|0|
+one|0|
+p|0|
+q|0|
+rej|0|
+s|1|s!11@
+sel|0|
+sol|0|
+spa|0|
+sud|0|
+sum|0|
+t|0|
+tem|0|
+tim|0|
+two|0|
+unu|0|
+up|0|
+vio|0|
+-- END TREE
+-- START TREE 2
+23
+__c|0|
+__i|0|
+__m|0|
+ac3|0|
+ann|0|
+arc|0|
+bfs|0|
+boa|0|
+com|0|
+cos|0|
+cou|0|
+dfs|0|
+fil|0|
+get|0|
+inf|0|
+ini|0|
+iss|0|
+mpc|0|
+par|0|
+poi|0|
+pri|0|
+rmi|0|
+vio|0|
+-- END TREE

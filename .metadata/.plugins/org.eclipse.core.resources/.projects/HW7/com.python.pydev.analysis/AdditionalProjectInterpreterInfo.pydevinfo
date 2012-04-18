@@ -1,0 +1,66 @@
+-- VERSION_3
+-- START DISKCACHE
+/Users/danzhang/Dropbox/CIS521/.metadata/.plugins/org.eclipse.core.resources/.projects/HW7/com.python.pydev.analysis/v1_indexcache
+.v1_indexcache
+Dataset|0|/Users/danzhang/Dropbox/CIS521/HW7/src/Dataset.py
+-- END DISKCACHE
+-- START DICTIONARY
+3
+3=Dataset.__cutInfrequentWords
+1=Dataset
+2=Dataset.__init__
+-- END DICTIONARY
+-- START TREE 1
+41
+I|0|
+bes|0|
+c|0|
+col|0|
+com|0|
+cou|0|
+d|0|
+d2|0|
+d3|0|
+dat|1|Dataset!9@
+den|0|
+err|0|
+f|0|
+g|0|
+h|0|
+i|0|
+j|0|
+k|0|
+l1|0|
+l2|0|
+lab|0|
+lam|0|
+m1|0|
+m2|0|
+nai|0|
+per|0|
+pro|0|
+res|0|
+rid|0|
+siz|0|
+ste|0|
+str|0|
+sum|0|
+tX|0|
+tY|0|
+tem|0|
+tes|0|
+tra|0|
+w|0|
+w_f|0|
+yha|0|
+-- END TREE
+-- START TREE 2
+7
+__a|1|__addFileToMap!1&10@
+__c|4|__cutInfrequentWords!1&10@__createDataMatrices!1&10@__convertWord!1&10@__classSrc!2&11@
+__i|1|__init__!1&10@
+__n|3|__numExamples!2&11@__numWords!2&11@__numWords!3&11@
+__w|2|__wordmap!2&11@__wordmap!3&11@
+d|1|d!1&11@
+get|2|getTrainAndTestSets!1&10@getWordList!1&10@
+-- END TREE

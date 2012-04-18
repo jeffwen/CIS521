@@ -29,8 +29,7 @@ class QLearnBot(ValueBot):
         '''
         YOUR CODE HERE
         '''
-
-        reward = reward_state.food_eaten * 5 + reward_state.death_dealt * 5 + reward_state.was_killed * 5
+        reward = reward_state.food_eaten * .7 + reward_state.death_dealt * .4 + reward_state.was_killed * -.00001
         return reward
     
     def avoid_collisions(self):
@@ -112,12 +111,11 @@ class QLearnBot(ValueBot):
         # number of features, so you don't bounce out of the bowl we're trying
         # to descend via gradient descent
 
-		#FIXFIXFIXFIXFIXFIXFIXFIXFIXFIX
         alpha = 0.00001
+
         
         # totally greedy default value, future rewards count for nothing, do not want
 
-		#FIXFIXFIXFIXFIXFIXFIXFIXFIXFIX
         discount = 0.00001
 
         # should be max_a' Q(s',a'), where right now we are in state s' and the
@@ -139,15 +137,12 @@ class QLearnBot(ValueBot):
         # step 2, explore or exploit? you should replace decide_to_explore with
         # something sensible based on the number of games played so far, self.ngames
 
-        #FIXFIXFIXFIXFIXFIXFIXFIXFIXFIX Done?
-        num = random.random()
-        prob = random.random()
-        decide_to_explore = num / self.ngames
-        if decide_to_explore > prob:
+        explore = 0.7 / self.ngames
+        decision = random.random()
+        if explore >= decision:
             return actions[0]
         else:      
             return max_next_action
-        
 
 # Set BOT variable to be compatible with rungame.py                            
 BOT = ValueBot

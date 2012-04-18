@@ -1,0 +1,203 @@
+'''
+Created on Apr 4, 2012
+
+@author: Naphy
+'''
+
+import numpy as np
+import Dataset
+import random
+
+def naiveBayes(TrainX, TrainY, TestX, TestY):   
+    transposedY = TrainY.T[0]
+    denom1 = np.sum(transposedY == 1)
+    denom2 = np.sum(transposedY == -1)
+    l1 = []
+    l2 = []
+    prod1 = 1
+    prod2 = 1
+    sum = 0
+    for j in range(0, TrainX[0].size):
+        l1.append((np.sum(TrainX[transposedY == 1,j]) + 1) / (denom1 + TrainX[0].size))
+        l2.append((np.sum(TrainX[transposedY == -1,j]) + 1) / (denom2 + TrainX[0].size))
+    for k in range(0, len(TestX)):
+        prod1 = 1
+        prod2 = 1
+        for i in range(0, TestX[0].size):
+            if TestX[k][i] == 1:
+                prod1 *= l1[i]
+                prod2 *= l2[i]
+        if prod1 > prod2: res = 1
+        else: res = -1
+        if res != TestY[k]: sum += 1
+    return sum/float(len(TestX))
+
+def ridgeRegression(TrainX, TrainY, lam):
+    tX = np.asmatrix(TrainX)
+    tY = np.asmatrix(TrainY)
+    temp = lam*np.identity(len(TrainX[0]), float)
+    w = np.linalg.inv(tX.T*tX + temp)*tX.T*tY
+    return w
+
+def streamwiseRegression(TrainX, TrainY, TestX, TestY, lam):
+    cols = []
+    error = 1.00
+    compY = []
+    for j in range(len(TrainX[0])):
+        cols.append(j)
+        w = ridgeRegression(TrainX[:,cols], TrainY, lam)
+
+        temp = np.dot(w, TrainX[:,cols])
+        if temp > 0: 
+            yHat = 1
+        else: yHat = -1
+        err_new = pow((TrainY[j] - yHat), 2) + lam*len(cols)
+        if err_new > error:
+            cols.remove(j)
+        error = err_new
+
+    w_final = ridgeRegression(TrainX[:,cols], TrainY, lam)
+    
+    for x in range(0, len(w_final)):
+        yHat = 0
+        if w_final[x] < 0:
+            yHat = -1
+        else:
+            yHat = 1
+        compY.append(yHat)
+    sum = 0.0
+    for x in range(0, len(TestX)):
+        if compY[x] == TestY[x][0]:
+            sum = sum + 1      
+    err_final = sum/float(len(TestX))
+    return err_final
+
+def stepwiseRegression(TrainX, TrainY, lam):
+    cols = []
+    error = 1.00
+    
+    for i in range(0, len(TrainX[0])):
+        best = 0
+        count = 0
+        for j in range(TrainX[0].size):
+            cols.append(j)
+            w = ridgeRegression(TrainX[:,cols], TrainY, lam)
+            temp = np.dot(w, TrainX[j])
+            if temp > 0: yHat = 1
+            else: yHat = -1
+            err_new = pow((TrainY[j] - yHat), 2) + lam*len(cols)
+            if err_new < error:
+                best = j
+                count += 1
+            error = err_new
+            cols.remove(j)
+        if count > 0:
+            cols.append(best)
+
+    w_final = ridgeRegression(TrainX[:,cols], TrainY, lam)
+    #err_final =
+    return #err_final
+
+def perceptron(TrainX, TrainY, TestX, TestY):
+    
+    w = []
+    for x in range(0, len(TrainX[0])):
+        w.append(random.randint(-1,1))
+    for j in range(0, 1000):
+        for x in range(0,len(TrainX)):
+            temp = np.dot(w, TrainX[x])
+            yHat = 0
+            
+            if temp > 0:
+                yHat = 1
+            else:
+                yHat = -1
+            
+            if yHat != TrainY[x]:
+                w = np.add(w, TrainY[x]*TrainX[x])
+    compY = []
+    for x in range(0, len(TestX)):
+        temp = np.dot(w, TestX[x])
+        yHat = 0
+            
+        if temp > 0:
+            yHat = 1.
+        else:
+            yHat = -1.
+        compY.append(yHat)
+    
+    sum = 0.0
+    for x in range(0, len(TestX)):
+        if compY[x] == TestY[x][0]:
+            sum = sum + 1
+     
+    return sum/float(len(TestX))
+
+
+
+d = Dataset.Dataset("../comp.sys.ibm.pc.hardware.txt", "../comp.sys.mac.hardware.txt", cutoff=100)
+d2 = Dataset.Dataset("../rec.sport.baseball.txt", "../rec.sport.hockey.txt", cutoff=100)
+d3 = Dataset.Dataset("../comp.sys.ibm.pc.hardware.txt", "../rec.sport.baseball.txt", cutoff=100)
+
+test11 = d.getTrainAndTestSets(.8, 1)
+test12 = d.getTrainAndTestSets(.8, 2)
+test13 = d.getTrainAndTestSets(.8, 3)
+test14 = d.getTrainAndTestSets(.8, 4)
+test15 = d.getTrainAndTestSets(.8, 5)
+
+test21 = d2.getTrainAndTestSets(.8, 1)
+test22 = d2.getTrainAndTestSets(.8, 2)
+test23 = d2.getTrainAndTestSets(.8, 3)
+test24 = d2.getTrainAndTestSets(.8, 4)
+test25 = d2.getTrainAndTestSets(.8, 5)
+
+test31 = d3.getTrainAndTestSets(.8, 1)
+test32 = d3.getTrainAndTestSets(.8, 2)
+test33 = d3.getTrainAndTestSets(.8, 3)
+test34 = d3.getTrainAndTestSets(.8, 4)
+test35 = d3.getTrainAndTestSets(.8, 5)
+'''
+print ridgeRegression(test1[0], test2[1], 3)'''
+'''
+f = perceptron(test1[0], test1[1], test1[2], test1[3])
+g = perceptron(test2[0], test2[1], test2[2], test2[3])
+h = perceptron(test3[0], test3[1], test3[2], test3[3])
+i = perceptron(test4[0], test4[1], test4[2], test4[3])
+j = perceptron(test5[0], test5[1], test5[2], test5[3])'''
+#k = streamwiseRegression(test5[0], test5[1], test5[2], test5[3], 3)
+'''
+print f
+print g
+print h
+print i
+print j
+print k'''
+
+'''
+print 'TestX = ' + str(test5[2])
+print 'TestY = ' + str(test5[3].T[0])
+print 'TestY == 1 = ' + str(test5[3].T[0] == 1)
+print test5[2].size
+print test5[2][0].size
+print test5[3].size '''
+
+
+
+print naiveBayes(test11[0], test11[1], test11[2], test11[3])
+print naiveBayes(test12[0], test12[1], test12[2], test12[3])
+print naiveBayes(test13[0], test13[1], test13[2], test13[3])
+print naiveBayes(test14[0], test14[1], test14[2], test14[3])
+print naiveBayes(test15[0], test15[1], test15[2], test15[3])
+print naiveBayes(test21[0], test21[1], test21[2], test21[3])
+print naiveBayes(test22[0], test22[1], test22[2], test22[3])
+print naiveBayes(test23[0], test23[1], test23[2], test23[3])
+print naiveBayes(test24[0], test24[1], test24[2], test24[3])
+print naiveBayes(test25[0], test25[1], test25[2], test25[3])
+print naiveBayes(test31[0], test31[1], test31[2], test31[3])
+print naiveBayes(test32[0], test32[1], test32[2], test32[3])
+print naiveBayes(test33[0], test33[1], test33[2], test33[3])
+print naiveBayes(test34[0], test34[1], test34[2], test34[3])
+print naiveBayes(test35[0], test35[1], test35[2], test35[3])
+
+
+

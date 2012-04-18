@@ -1,0 +1,75 @@
+-- VERSION_3
+-- START DISKCACHE
+/Users/danzhang/Dropbox/CIS521/.metadata/.plugins/org.eclipse.core.resources/.projects/ac3/com.python.pydev.analysis/v1_indexcache
+.v1_indexcache
+sudoku|0|/Users/danzhang/Dropbox/CIS521/ac3/sudoku.py
+maintest|0|/Users/danzhang/Dropbox/CIS521/ac3/maintest.py
+-- END DISKCACHE
+-- START DICTIONARY
+4
+3=SudokuBoard.__init__
+2=maintest
+1=sudoku
+4=SudokuBoard
+-- END DICTIONARY
+-- START TREE 1
+43
+__c|1|__computePointDict!10@
+ann|2|anneal!10@annealSuccessor!10@
+b1|1|b1!11@
+b1_|1|b1_cost!11@
+b2|1|b2!11@
+b2_|1|b2_cost!11@
+bfs|2|BFSsuccessor!10@BFS!10@
+boo|1|booleano!11@
+col|2|col!11@col_constr!11@
+com|1|computeUnusedNums!10@
+con|1|cons!11@
+cos|1|cost!10@
+cou|1|count!10@
+dfs|2|DFSsuccessor!10@DFS!10@
+dow|1|down!11@
+ele|1|elem!11@
+f|1|f!19@
+fou|1|found!11@
+get|1|getConstraintSets!10@
+inf|1|inform!10@
+ini|1|initialize!10@
+iss|1|isSolved!10@
+len|1|length!11@
+loc|2|loc2!11@loc1!11@
+new|1|new_dict!11@
+non|1|non_fixed!11@
+one|1|one!11@
+p|1|p!11@
+q|1|q!11@
+rej|1|rej!11@
+s|1|s!19@
+sel|1|self!11@
+sol|1|solved!11@
+spa|1|space!11@
+sud|1|SudokuBoard!9@
+sum|1|sum!11@
+t|1|t!11@
+tem|1|temp!11@
+tim|1|time!11@
+two|1|two!11@
+unu|1|unused!11@
+up|1|up!11@
+vio|1|violates!10@
+-- END TREE
+-- START TREE 2
+12
+__c|2|__constraints!3&11@__computeConstraintSets!4&10@
+__i|1|__init__!4&10@
+__m|1|__mapConstraint!4&10@
+ac3|1|ac3!4&10@
+arc|2|arcCreate!4&10@arc!3&11@
+boa|1|board!3&11@
+fil|1|filename!3&11@
+mpc|1|mpC!3&11@
+par|1|parseBoard!4&10@
+poi|1|pointDict!3&11@
+pri|1|printBoard!4&10@
+rmi|1|rmInVal!4&10@
+-- END TREE
